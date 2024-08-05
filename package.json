@@ -1,6 +1,6 @@
 {
   "name": "@neighbr/common",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A common utility package for neighbr aptms project",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -20,8 +20,10 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@types/winston": "^2.4.4",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "winston": "^3.13.1"
   }
 }
