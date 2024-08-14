@@ -1,4 +1,5 @@
 import { IResponse } from "../interfaces/response.interface";
+import { Response } from "express";
 
 export class ResponseCreator {
   private data?: Object | string;
@@ -26,12 +27,20 @@ export class ResponseCreator {
     return this;
   }
 
-  getResponse(): IResponse {
+  buildResponse(): IResponse {
     return {
+      success: true,
       data: this.data,
       statusCode: this.statusCode,
       headers: this.headers,
       message: this.message,
     };
+  }
+  sendResponse(res: Response): void {
+    const response = this.buildResponse();
+    if (response.headers) {
+      res.set(response.headers);
+    }
+    res.status(this.statusCode).json(response);
   }
 }
