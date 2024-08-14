@@ -1,1 +1,1 @@
-export * from "./statusCodes";
+export * from "./status-codes";
