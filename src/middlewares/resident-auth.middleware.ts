@@ -31,7 +31,6 @@ const residentAuth = async (
   try {
     const decoded: any = jwt.verify(token, process.env.JWT_SECRET);
     req.residentId = decoded?.id;
-    
 
     if (!req.residentId) {
       return next(new Error("Not authorized, resident not found"));
