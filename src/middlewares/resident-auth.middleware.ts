@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import { UnauthorizedError } from "../utils/error-handler"; 
 
 declare global {
   namespace Express {
@@ -21,11 +22,11 @@ const residentAuth = async (
   }
 
   if (!token) {
-    return next(new Error("Not authorized, no token"));
+    return next(new UnauthorizedError("Not authorized, no token"));
   }
 
   if (!process.env.JWT_SECRET) {
-    return next(new Error("JWT_SECRET is not defined."));
+    return next(new UnauthorizedError("JWT_SECRET is not defined."));
   }
 
   try {
@@ -33,12 +34,12 @@ const residentAuth = async (
     req.residentId = decoded?.id;
 
     if (!req.residentId) {
-      return next(new Error("Not authorized, resident not found"));
+      return next(new UnauthorizedError("Not authorized, resident not found"));
     }
 
     next();
   } catch (error) {
-    return next(new Error("Not authorized, invalid token"));
+    return next(new UnauthorizedError("Not authorized, invalid token"));
   }
 };
 
