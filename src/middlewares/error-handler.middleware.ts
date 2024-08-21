@@ -11,14 +11,14 @@ export function errorHandler(
   console.error(err.stack);
 
   if (err instanceof ErrorHandler) {
-    // Custom error handling for instances of ErrorHandler
     res.status(err.statusCode).json({
+      success: false,
       status: "error",
       message: err.message,
     });
   } else {
-    // Default handling for all other errors
     res.status(statusCodes.INTERNAL_SERVER_ERROR).json({
+      success: false,
       status: "error",
       message: err.message || "Internal Server Error",
     });
