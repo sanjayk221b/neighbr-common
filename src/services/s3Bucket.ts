@@ -18,7 +18,7 @@ export interface IFile {
   size: number;
 }
 
-export default class S3Uploader {
+export class S3Uploader {
   private _bucketName: string;
   private _bucketRegion: string;
   private _s3AccessKey: string;
