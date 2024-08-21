@@ -15,7 +15,7 @@ declare global {
     }
   }
 }
-
+ 
 const currentUser = (req: Request, res: Response, next: NextFunction) => {
   let token;
 
