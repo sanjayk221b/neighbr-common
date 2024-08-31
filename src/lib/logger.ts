@@ -5,7 +5,7 @@ const { levels, colors } = customLevels;
 
 export const logger = winston.createLogger({
   levels,
-  level: "info",
+  level: "silly",
   format: winston.format.combine(
     winston.format.colorize(),
     winston.format.json()
