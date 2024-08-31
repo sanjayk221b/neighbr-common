@@ -3,12 +3,17 @@ import { customLevels } from "../constants";
 
 const { levels, colors } = customLevels;
 
+const customFormat = winston.format.printf(({ level, message, timestamp }) => {
+  return `${timestamp} [${level.toUpperCase()}]: ${message}`;
+});
+
 export const logger = winston.createLogger({
   levels,
   level: "silly",
   format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.json()
+    winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+    winston.format.colorize({ all: true }),
+    customFormat
   ),
   transports: [
     new winston.transports.File({ filename: "error.log", level: "error" }),
@@ -21,7 +26,7 @@ if (process.env.NODE_ENV !== "production") {
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize({ all: true }),
-        winston.format.simple()
+        customFormat
       ),
     })
   );
