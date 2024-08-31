@@ -25,11 +25,13 @@
     "@aws-sdk/client-s3": "^3.629.0",
     "@aws-sdk/lib-storage": "^3.629.0",
     "@aws-sdk/s3-request-presigner": "^3.629.0",
+    "@types/morgan": "^1.9.9",
     "@types/winston": "^2.4.4",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "winston": "^3.13.1",
+    "winston": "^3.14.2",
     "yargs": "^17.7.2"
   }
 }
