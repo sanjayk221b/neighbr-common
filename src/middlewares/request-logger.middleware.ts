@@ -1,13 +1,8 @@
-import { Request, Response, NextFunction } from "express";
+import morgan from "morgan";
 import { logger } from "../lib";
 
-const requestLoggerMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  logger.info(`${req.method} ${req.url}`);
-  next();
+const stream = {
+  write: (message: string) => logger.http(message.trim()),
 };
 
-export default requestLoggerMiddleware;
+export const requestLogger = morgan("dev", { stream });
