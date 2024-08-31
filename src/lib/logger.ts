@@ -16,7 +16,6 @@ export const logger = winston.createLogger({
   levels,
   level: "silly",
   format: combine(
-    colorize(),
     label({ label: SERVICE_NAME }),
     timestamp({ format: "HH:mm:ss" }),
     myFormat
