@@ -36,6 +36,7 @@ export class ResponseCreator {
       message: this.message,
     };
   }
+  
   sendResponse(res: Response): void {
     const response = this.buildResponse();
     if (response.headers) {
